@@ -56,7 +56,7 @@ const listingSchema = new mongoose.Schema({
   },
 
   category: {
-    type: String,
+    type: [String],
     enum: [
       "Trending",
       "Rooms",
