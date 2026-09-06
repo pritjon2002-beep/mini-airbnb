@@ -142,7 +142,9 @@ footer {
 .show-img { 
     height: 50vh;
     width:100%;
-    object-fit: fill;
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
     border-radius: 1rem;
 }
 
