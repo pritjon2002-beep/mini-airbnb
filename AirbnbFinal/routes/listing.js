@@ -23,11 +23,17 @@ router
     wrapAsync(listingController.createListing),
   );
 
+// New Listing Route
+router.get("/new", isLoggedIn, listingController.showNewForm);
+
 //search
 router.get("/search", wrapAsync(listingController.searchListings));
 
-// New Listing Route
-router.get("/new", isLoggedIn, listingController.showNewForm);
+// Category Filter Route (must be before /:id)
+router.get(
+  "/category/:category",
+  wrapAsync(listingController.filterByCategory),
+);
 
 router
   .route("/:id")

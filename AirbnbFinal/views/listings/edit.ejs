@@ -51,9 +51,27 @@
         <div class="invalid-feedback">Enter a Valid Description</div>
         </div>
 
+        <div class="mb-3">
+  <label class="form-label d-block">Select Categories : </label>
+  <div class="d-flex flex-wrap gap-2">
+    <% ["Trending","Rooms","Mountains","Amazing Pools","Iconic Cities","Castles","Camping","Farms","Arctic","Cabins","Tiny Homes"].forEach((cat, i) => { %>
+      <input 
+        type="checkbox" 
+        class="btn-check" 
+        name="listing[category]" 
+        id="editCat<%= i %>" 
+        value="<%= cat %>" 
+        autocomplete="off"
+        <%= listing.category && listing.category.includes(cat) ? "checked" : "" %>
+      >
+      <label class="btn btn-outline-dark btn-sm" for="editCat<%= i %>"><%= cat %></label>
+    <% }) %>
+  </div>
+</div>
+
         <div class="mb-3" >
           <h2 class="fs-4">Listing Image</h2>
-          <img src="<%=finalImage%>" alt="" >
+          <img src="<%=finalImage%>" alt="" class="show-img">
         </div>
 
         <div class="mb-3">

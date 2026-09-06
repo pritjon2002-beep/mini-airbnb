@@ -142,3 +142,10 @@ module.exports.searchListings = async (req, res) => {
   });
   res.render("./listings/index.ejs", { allListings });
 };
+
+//filter by category
+module.exports.filterByCategory = async (req, res) => {
+  let { category } = req.params;
+  let allListings = await Listing.find({ category: category });
+  res.render("./listings/index.ejs", { allListings });
+};
