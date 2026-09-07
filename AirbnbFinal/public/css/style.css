@@ -228,3 +228,19 @@ footer {
     align-items: center;
     justify-content: center;
   }
+
+  /* alert-responsive */
+  .alert-responsive {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+  }
+
+ @media (min-width: 992px) {
+  .alert-responsive {
+    width: 50%;
+    margin-left: 10%;
+    font-size: 1.3rem;
+  }
+ }
