@@ -14,6 +14,14 @@ module.exports.createBooking = async (req, res) => {
   let checkInDate = new Date(checkIn);
   let checkOutDate = new Date(checkOut);
 
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (checkInDate < today) {
+    req.flash("error", "Check-in date cannot be in the past");
+    return res.redirect(`/listings/${id}`);
+  }
+
   // Check-out must be after check-in
   if (checkOutDate <= checkInDate) {
     req.flash("error", "Check-out date must be after check-in date");
