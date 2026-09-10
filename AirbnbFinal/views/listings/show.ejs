@@ -27,6 +27,29 @@
 </div>
  <% } %>
 
+ // book now 
+ <% if(currUser && !listing.owner._id.equals(currUser._id))  { %>
+<div class="mt-4 mb-4">
+  <h4>Book This Place</h4>
+  <form action="/listings/<%= listing.id %>/bookings" method="POST" class="needs-validation" novalidate>
+    <div class="row g-2">
+      <div class="col-6">
+        <label for="checkIn" class="form-label">Check-in</label>
+        <input type="date" name="booking[checkIn]" id="checkIn" class="form-control" required>
+      </div>
+      <div class="col-6">
+        <label for="checkOut" class="form-label">Check-out</label>
+        <input type="date" name="booking[checkOut]" id="checkOut" class="form-control" required>
+      </div>
+    </div>
+
+    <p class="mt-3 fs-5">Total: ₹<span id="totalPrice">0</span></p>
+
+    <button type="submit" class="btn btn-danger">Book Now</button>
+  </form>
+</div>
+<% } %>
+
   <div class="mt-2"> 
     <h3 class="fs-3">Where You'll Be  </h3>
     <!-- map render -->
