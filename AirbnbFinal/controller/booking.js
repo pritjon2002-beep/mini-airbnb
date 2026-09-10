@@ -56,6 +56,25 @@ module.exports.createBooking = async (req, res) => {
   });
 
   await newBooking.save();
+
+  // Re-check for conflicts right after saving (race-condition safety net)
+  let conflicting = await Booking.find({
+    listing: id,
+    // check for overlaps among other bookings, but ignore the one I just created myself
+    _id: { $ne: newBooking._id },
+    checkIn: { $lt: checkOutDate },
+    checkOut: { $gt: checkInDate },
+  });
+
+  if (conflicting.length > 0) {
+    await Booking.findByIdAndDelete(newBooking._id);
+    req.flash(
+      "error",
+      "Sorry, someone just booked these dates. Please choose different ones.",
+    );
+    return res.redirect(`/listings/${id}`);
+  }
+
   req.flash("success", "Booking confirmed!");
   res.redirect(`/listings/${id}`);
 };
