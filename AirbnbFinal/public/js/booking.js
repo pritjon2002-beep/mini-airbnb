@@ -25,7 +25,7 @@ function calculateTotal() {
 }
 
 checkInInput.addEventListener("change", () => {
-  checkOutInput.setAttribute("min", checkInInput.value);
+  checkInInput.setAttribute("min", checkInInput.value);
   calculateTotal();
 });
 
