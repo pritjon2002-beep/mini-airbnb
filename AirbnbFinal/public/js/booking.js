@@ -33,4 +33,3 @@ checkOutInput.addEventListener("change", () => {
   checkOutInput.setAttribute("min", checkOutInput.value);
   calculateTotal();
 });
-// checkOutInput.addEventListener("change", calculateTotal);
