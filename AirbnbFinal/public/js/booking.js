@@ -8,6 +8,7 @@ const pricePerNight = window.listingPrice; // set this in show.ejs
 // setAttribute("min", today) → the browser's date picker will now grey out/block any date before today
 const today = new Date().toISOString().split("T")[0];
 checkInInput.setAttribute("min", today);
+checkOutInput.setAttribute("min", today);
 
 function calculateTotal() {
   const checkIn = new Date(checkInInput.value);
@@ -27,4 +28,9 @@ checkInInput.addEventListener("change", () => {
   checkOutInput.setAttribute("min", checkInInput.value);
   calculateTotal();
 });
-checkOutInput.addEventListener("change", calculateTotal);
+
+checkOutInput.addEventListener("change", () => {
+  checkOutInput.setAttribute("min", checkOutInput.value);
+  calculateTotal();
+});
+// checkOutInput.addEventListener("change", calculateTotal);
