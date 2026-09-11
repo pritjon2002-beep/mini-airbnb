@@ -85,7 +85,7 @@ module.exports.myBookings = async (req, res) => {
     .populate("listing")
     .sort({ checkIn: 1 });
 
-  res.render("bookings/my-bookings.ejs", { bookings });
+  res.render("bookings/mybooking.ejs", { bookings });
 };
 
 //cancel booking
@@ -96,15 +96,15 @@ module.exports.cancelBooking = async (req, res) => {
 
   if (!booking) {
     req.flash("error", "Booking not found");
-    return res.redirect("/my-bookings");
+    return res.redirect("/mybooking");
   }
 
   if (!booking.user.equals(req.user._id)) {
     req.flash("error", "You can only cancel your own bookings");
-    return res.redirect("/my-bookings");
+    return res.redirect("/mybooking");
   }
 
   await Booking.findByIdAndDelete(bookingId);
   req.flash("success", "Booking cancelled successfully");
-  res.redirect("/my-bookings");
+  res.redirect("/mybooking");
 };

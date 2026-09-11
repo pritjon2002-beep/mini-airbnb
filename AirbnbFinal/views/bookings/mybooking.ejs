@@ -18,6 +18,9 @@
             <p class="mb-1">Check-in: <%= booking.checkIn.toDateString() %></p>
             <p class="mb-1">Check-out: <%= booking.checkOut.toDateString() %></p>
             <p class="mb-0">Total: ₹<%= booking.totalPrice.toLocaleString("en-IN") %></p>
+            <form action="/listings/<%= booking.listing._id %>/bookings/<%= booking._id %>?_method=DELETE" method="POST" class="mt-2" onsubmit="return confirm('Cancel this booking?')">
+  <button class="btn btn-sm btn-outline-danger">Cancel Booking</button>
+</form>
           </div>
         </div>
       </div>
