@@ -86,8 +86,6 @@ module.exports.myBookings = async (req, res) => {
     .sort({ checkIn: 1 });
 
   res.render("bookings/mybooking.ejs", { bookings });
-<<<<<<< HEAD
-=======
 };
 
 //cancel booking
@@ -109,5 +107,4 @@ module.exports.cancelBooking = async (req, res) => {
   await Booking.findByIdAndDelete(bookingId);
   req.flash("success", "Booking cancelled successfully");
   res.redirect("/mybooking");
->>>>>>> booking
 };
