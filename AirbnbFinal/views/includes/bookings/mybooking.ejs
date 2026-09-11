@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="show-wrapper">
+  <h2 class="mt-3 mb-4">My Bookings</h2>
+
+  <% if(bookings.length === 0) { %>
+    <p>You have no bookings yet.</p>
+  <% } else { %>
+    <% bookings.forEach(booking => { %>
+      <div class="card mb-3 p-3">
+        <div class="row g-3">
+          <div class="col-12 col-md-3">
+            <img src="<%= booking.listing.image.url %>" class="img-fluid rounded" alt="Listing Image">
+          </div>
+          <div class="col-12 col-md-9">
+            <h5><%= booking.listing.title %></h5>
+            <p class="mb-1"><%= booking.listing.location %>, <%= booking.listing.country %></p>
+            <p class="mb-1">Check-in: <%= booking.checkIn.toDateString() %></p>
+            <p class="mb-1">Check-out: <%= booking.checkOut.toDateString() %></p>
+            <p class="mb-0">Total: ₹<%= booking.totalPrice.toLocaleString("en-IN") %></p>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  <% } %>
+</div>
