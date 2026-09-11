@@ -6,4 +6,10 @@ const bookingController = require("../controller/booking.js");
 
 router.post("/", isLoggedIn, wrapAsync(bookingController.createBooking));
 
+router.delete(
+  "/:bookingId",
+  isLoggedIn,
+  wrapAsync(bookingController.cancelBooking),
+);
+
 module.exports = router;

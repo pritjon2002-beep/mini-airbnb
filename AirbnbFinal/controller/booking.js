@@ -79,10 +79,35 @@ module.exports.createBooking = async (req, res) => {
   res.redirect(`/listings/${id}`);
 };
 
+//mybookings
 module.exports.myBookings = async (req, res) => {
   let bookings = await Booking.find({ user: req.user._id })
     .populate("listing")
     .sort({ checkIn: 1 });
 
   res.render("bookings/mybooking.ejs", { bookings });
+<<<<<<< HEAD
+=======
+};
+
+//cancel booking
+module.exports.cancelBooking = async (req, res) => {
+  let { bookingId } = req.params;
+
+  let booking = await Booking.findById(bookingId);
+
+  if (!booking) {
+    req.flash("error", "Booking not found");
+    return res.redirect("/mybooking");
+  }
+
+  if (!booking.user.equals(req.user._id)) {
+    req.flash("error", "You can only cancel your own bookings");
+    return res.redirect("/mybooking");
+  }
+
+  await Booking.findByIdAndDelete(bookingId);
+  req.flash("success", "Booking cancelled successfully");
+  res.redirect("/mybooking");
+>>>>>>> booking
 };
