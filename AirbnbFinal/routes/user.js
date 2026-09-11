@@ -5,6 +5,7 @@ const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
 const { isLoggedIn, saveRedirectUrl } = require("../middleware.js");
 const userController = require("../controller/users.js");
+const bookingController = require("../controller/booking.js");
 
 //singup route
 router
@@ -51,5 +52,8 @@ router.get(
 //user logout
 
 router.get("/logout", userController.logout);
+
+//my booking
+router.get("/my-bookings", isLoggedIn, wrapAsync(bookingController.myBookings));
 
 module.exports = router;
