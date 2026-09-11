@@ -78,3 +78,11 @@ module.exports.createBooking = async (req, res) => {
   req.flash("success", "Booking confirmed!");
   res.redirect(`/listings/${id}`);
 };
+
+module.exports.myBookings = async (req, res) => {
+  let bookings = await Booking.find({ user: req.user._id })
+    .populate("listing")
+    .sort({ checkIn: 1 });
+
+  res.render("bookings/my-bookings.ejs", { bookings });
+};
