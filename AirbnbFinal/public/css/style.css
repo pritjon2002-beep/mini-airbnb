@@ -155,14 +155,15 @@ footer {
     margin: 0 ;
     align-self: flex-start;
   }
-  .show-wrapper{
+  .showpage{
     margin-left: 17%;
   }
   .edit{
-    margin-right: 17%;
+    margin-left: 10%;
+    margin-right: 10%;
   }
   .edit-header { 
-    margin-left: 17%;
+    margin-left: 10%;
   }
   .description{
    max-width: 65%;
