@@ -84,5 +84,5 @@ module.exports.myBookings = async (req, res) => {
     .populate("listing")
     .sort({ checkIn: 1 });
 
-  res.render("bookings/my-bookings.ejs", { bookings });
+  res.render("bookings/mybooking.ejs", { bookings });
 };
