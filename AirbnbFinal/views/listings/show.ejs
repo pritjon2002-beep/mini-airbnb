@@ -16,13 +16,13 @@
 </div>
 <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
 <div class=" d-flex mt-2 pb-3">  
- <a href="/listings/<%= listing.id %>/edit"><button class="btn btn-danger">Edit Listing</button></a>
+ <a href="/listings/<%= listing.id %>/edit"><button class="btn btn-success">Edit Listing</button></a>
  <form action="/listings/<%= listing._id %>?_method=delete " method="post" onsubmit="return confirm('Are you sure to delete this Listing')">
-    <button class="btn btn-dark ms-2">
+    <button class="btn btn-danger ms-2">
     Delete Listing
     </button>
  </form>
-     <a href="/listings/<%= listing.id %>/bookings" class="ms-2"><button class="btn btn-outline-dark">View Bookings</button></a>
+     <a href="/listings/<%= listing.id %>/bookings" class="ms-2"><button class="text-white btn btn-success  btn-outline-dark">View Bookings</button></a>
 </div>
  <% } %>
 
