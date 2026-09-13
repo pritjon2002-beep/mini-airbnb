@@ -108,3 +108,13 @@ module.exports.cancelBooking = async (req, res) => {
   req.flash("success", "Booking cancelled successfully");
   res.redirect("/mybooking");
 };
+
+//listing booking
+module.exports.listingBookings = async (req, res) => {
+  let { id } = req.params;
+  let bookings = await Booking.find({ listing: id })
+    .populate("user")
+    .sort({ checkIn: 1 });
+
+  res.render("bookings/listing-bookings.ejs", { bookings, listingId: id });
+};
